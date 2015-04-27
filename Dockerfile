@@ -5,9 +5,9 @@ MAINTAINER Jacek Kowalski <jkowalsk@student.agh.edu.pl>
 ENV GRADLE_INSTALL_VERSION 2.3
 
 # Update system & install dependencies
-RUN yum -y install cvs subversion git mercurial java-1.7.0-openjdk-devel java-1.8.0-openjdk-devel ant maven unzip wget \
+RUN yum -y install cvs subversion git mercurial java-1.7.0-openjdk-devel java-1.8.0-openjdk-devel ant maven unzip wget xorg-x11-server-Xvfb \
 	&& yum -y update \
-	&& yum clean all
+	&& yum -y clean all
 
 # Install gradle
 RUN cd /tmp \

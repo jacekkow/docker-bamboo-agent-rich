@@ -15,4 +15,6 @@ if [ ! -f ${BAMBOO_AGENT} ]; then
 	wget "-O${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/agentInstaller/${BAMBOO_AGENT}"
 fi
 
+Xvfb &
+
 java -jar "${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/"
