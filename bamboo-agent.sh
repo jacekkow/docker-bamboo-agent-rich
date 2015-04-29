@@ -15,7 +15,8 @@ if [ ! -f ${BAMBOO_AGENT} ]; then
 	wget "-O${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/agentInstaller/${BAMBOO_AGENT}"
 fi
 
-Xvfb :1 &
 export DISPLAY=:1
+
+( while true; do Xvfb :1 >> /tmp/Xvfb.log 2>&1; rm -f /tmp/.X1-lock; done ) &
 
 java -jar "${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/"
