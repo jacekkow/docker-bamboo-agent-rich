@@ -8,8 +8,7 @@ if [ -z "${BAMBOO_SERVER}" ]; then
 	exit 1
 fi
 
-BAMBOO_VERSION=`wget -O- ${BAMBOO_SERVER} 2>/dev/null | sed -n 's/^.*version \([0-9.]\+\) build.*/\1/p'`
-BAMBOO_AGENT=atlassian-bamboo-agent-installer-${BAMBOO_VERSION}.jar
+BAMBOO_AGENT=atlassian-bamboo-agent-installer.jar
 
 if [ ! -f ${BAMBOO_AGENT} ]; then
 	wget "-O${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/agentInstaller/${BAMBOO_AGENT}"
