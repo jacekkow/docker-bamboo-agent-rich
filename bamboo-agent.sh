@@ -16,6 +16,7 @@ fi
 
 export DISPLAY=:1
 
+rm -f /tmp/Xvfb.log
 ( while true; do Xvfb :1 >> /tmp/Xvfb.log 2>&1; rm -f /tmp/.X1-lock; done ) &
 
 java -jar "${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/"
