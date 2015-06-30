@@ -11,12 +11,22 @@ fi
 BAMBOO_AGENT=atlassian-bamboo-agent-installer.jar
 
 if [ ! -f ${BAMBOO_AGENT} ]; then
+	echo "Downloading agent JAR..."
 	wget "-O${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/agentInstaller/${BAMBOO_AGENT}"
+fi
+
+if [ ! -f bamboo-agent-home/bamboo-agent.cfg.xml -a "${BAMBOO_AGENT_UUID}" != "" ]; then
+	echo "Creating agent configuration file..."
+
+	mkdir -p bamboo-agent-home
+	echo 'agentUuid='${BAMBOO_AGENT_UUID} > bamboo-agent-home/uuid-temp.properties
 fi
 
 export DISPLAY=:1
 
+echo Starting Xvfb...
 rm -f /tmp/Xvfb.log
-( while true; do Xvfb :1 >> /tmp/Xvfb.log 2>&1; rm -f /tmp/.X1-lock; done ) &
+( while true; do Xvfb ${DISPLAY} >> /tmp/Xvfb.log 2>&1; rm -f /tmp/.X1-lock; done ) &
 
+echo Starting Bamboo Agent...
 java -jar "${BAMBOO_AGENT}" "${BAMBOO_SERVER}/agentServer/"

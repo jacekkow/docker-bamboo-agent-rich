@@ -46,6 +46,13 @@ administration console if "Remote Agent Authentication" is enabled.
 See https://confluence.atlassian.com/display/BAMBOO/Agent+authentication
 for more information.
 
+It is also possible to fix agent's UUID (e.g. to one already authorized)
+using `BAMBOO_AGENT_UUID` environment variable:
+
+```bash
+docker run -d --name="bamboo-agent1" -e BAMBOO_AGENT_UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich
+```
+
 ## Internals
 
 On first run agent JAR is downloaded from URL:
