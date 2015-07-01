@@ -22,6 +22,10 @@ RUN wget --no-check-certificate --no-cookies \
 	&& yum -y localinstall jdk-8u45-linux-x64.rpm \
 	&& rm -f jdk-8u45-linux-x64.rpm
 
+# Install node.js
+RUN yum -y install epel-release \
+	&& yum -y install nodejs
+
 RUN useradd -r -m -U bamboo-agent
 
 COPY bamboo-agent.sh /
