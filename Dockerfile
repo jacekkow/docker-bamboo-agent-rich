@@ -15,7 +15,7 @@ RUN cd /tmp \
 	&& unzip gradle-${GRADLE_INSTALL_VERSION}-bin.zip -d /opt \
 	&& rm gradle-${GRADLE_INSTALL_VERSION}-bin.zip
 
-RUN groupadd -r bamboo-agent && useradd -r -m -g bamboo-agent bamboo-agent
+RUN useradd -r -m -U bamboo-agent
 
 COPY bamboo-agent.sh /
 
