@@ -26,6 +26,7 @@ echo "Setting up the environment..."
 export LANG=en_US.UTF-8
 export JAVA_TOOL_OPTIONS="-Dfile.encoding=utf-8 -Dsun.jnu.encoding=utf-8"
 export DISPLAY=:1
+export M2_HOME=/opt/apache-maven-${MAVEN_INSTALL_VERSION}
 
 echo Starting Xvfb...
 rm -f /tmp/Xvfb.log
