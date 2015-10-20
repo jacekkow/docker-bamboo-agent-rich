@@ -17,11 +17,13 @@ Docker repository with additional applications installed:
 * JDKs:
  * OpenJDK 1.7 (/usr/lib/jvm/java-1.7.0-openjdk),
  * OpenJDK 1.8 (/usr/lib/jvm/java-1.8.0-openjdk),
+ * Oracle JDK 1.8 (/usr/java/latest),
 * build systems:
  * Ant (/usr/share/ant),
- * Maven 3 (/usr/share/maven),
+ * Maven 3 (/opt/apache-maven-3.0.5),
  * Gradle 2.3 (/opt/gradle-2.3),
 * miscellaneous:
+ * node.js,
  * unzip,
  * wget,
  * Xvfb (started during container initialization).
