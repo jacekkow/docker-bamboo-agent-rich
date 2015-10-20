@@ -19,7 +19,7 @@ Docker repository with additional applications installed:
  * OpenJDK 1.8 (/usr/lib/jvm/java-1.8.0-openjdk),
 * build systems:
  * Ant (/usr/share/ant),
- * Maven 3 (/usr/share/maven),
+ * Maven 3 (/opt/apache-maven-3.0.5),
  * Gradle 2.3 (/opt/gradle-2.3),
 * miscellaneous:
  * unzip,
