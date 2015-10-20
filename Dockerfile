@@ -26,9 +26,9 @@ RUN cd /tmp \
 # Install Oracle JDK
 RUN wget --no-check-certificate --no-cookies \
 	--header "Cookie: oraclelicense=accept-securebackup-cookie" \
-	http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.rpm \
-	&& yum -y localinstall jdk-8u45-linux-x64.rpm \
-	&& rm -f jdk-8u45-linux-x64.rpm
+	http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm \
+	&& yum -y localinstall jdk-8u60-linux-x64.rpm \
+	&& rm -f jdk-8u60-linux-x64.rpm
 
 RUN useradd -r -m -U bamboo-agent
 
