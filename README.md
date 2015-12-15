@@ -41,7 +41,7 @@ Create Docker container and pass URL to your Bamboo installation
 using `BAMBOO_SERVER` environment variable:
 
 ```bash
-docker run -d --name="bamboo-agent1" -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich:chromium
+docker run -d --name="bamboo-agent1" -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich-chromium
 ```
 
 Remember to approve access for a new remote agent in Bamboo
@@ -53,7 +53,7 @@ It is also possible to fix agent's UUID (e.g. to one already authorized)
 using `BAMBOO_AGENT_UUID` environment variable:
 
 ```bash
-docker run -d --name="bamboo-agent1" -e BAMBOO_AGENT_UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich:chromium
+docker run -d --name="bamboo-agent1" -e BAMBOO_AGENT_UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich-chromium
 ```
 
 ## Internals
