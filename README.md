@@ -2,34 +2,35 @@ This is Docker image of a remote agent for Atlassian Bamboo,
 customized for building Java, Gradle and SWT-based applications.
 
 It is not based on Atlassian image - instead it is built
-from bare CentOS 7 image.
+from bare Debian Jessie image.
 
 ## Components
 
-This image is based on latest CentOS 7 image from official
+This image is based on latest Debian Jessie image from official
 Docker repository with additional applications installed:
 
 * version control systems:
- * CVS (/bin/cvs),
- * SVN (/bin/svn),
- * Git (/bin/git),
- * Hg (/bin/hg),
+ * CVS (/usr/bin/cvs),
+ * SVN (/usr/bin/svn),
+ * Git (/usr/bin/git),
+ * Hg (/usr/bin/hg),
 * JDKs:
  * OpenJDK 1.7 (/usr/lib/jvm/java-1.7.0-openjdk),
  * OpenJDK 1.8 (/usr/lib/jvm/java-1.8.0-openjdk),
- * Oracle JDK 1.8 (/usr/java/latest),
 * build systems:
  * Ant (/usr/share/ant),
  * Maven 3 (/opt/apache-maven-3.0.5),
  * Gradle 2.3 (/opt/gradle-2.3),
 * miscellaneous:
+ * chromedriver,
+ * chromium,
  * node.js,
  * unzip,
  * wget,
  * Xvfb (started during container initialization).
 
-Apart from Gradle, all software is installed
-from CentOS repositories.
+Apart from Gradle and Maven all software is installed
+from Debian repositories.
 
 Gradle is installed using binary package available
 on the official website.
@@ -40,7 +41,7 @@ Create Docker container and pass URL to your Bamboo installation
 using `BAMBOO_SERVER` environment variable:
 
 ```bash
-docker run -d --name="bamboo-agent1" -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich
+docker run -d --name="bamboo-agent1" -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich:chromium
 ```
 
 Remember to approve access for a new remote agent in Bamboo
@@ -52,7 +53,7 @@ It is also possible to fix agent's UUID (e.g. to one already authorized)
 using `BAMBOO_AGENT_UUID` environment variable:
 
 ```bash
-docker run -d --name="bamboo-agent1" -e BAMBOO_AGENT_UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich
+docker run -d --name="bamboo-agent1" -e BAMBOO_AGENT_UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -e BAMBOO_SERVER=http://bamboo.domain.local jacekkow/bamboo-agent-rich:chromium
 ```
 
 ## Internals

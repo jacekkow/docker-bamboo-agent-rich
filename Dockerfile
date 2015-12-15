@@ -1,4 +1,4 @@
-FROM centos:7
+FROM debian:jessie
 MAINTAINER Jacek Kowalski <jkowalsk@student.agh.edu.pl>
 
 # Maven version to install
@@ -6,10 +6,12 @@ ENV MAVEN_INSTALL_VERSION 3.0.5
 # Gradle version to install
 ENV GRADLE_INSTALL_VERSION 2.3
 
+RUN echo deb http://httpredir.debian.org/debian jessie-backports main >> /etc/apt/sources.list
+
 # Update system & install dependencies
-RUN yum -y update \
-	&& yum -y install cvs subversion git mercurial java-1.7.0-openjdk-devel java-1.8.0-openjdk-devel ant unzip wget xorg-x11-server-Xvfb \
-	&& yum -y clean all
+RUN apt-get -y update \
+	&& apt-get -y install cvs subversion git mercurial openjdk-7-jdk openjdk-8-jdk ant unzip wget xvfb \
+	&& apt-get -y clean
 
 # Install maven (see https://jira.atlassian.com/browse/BAM-16043)
 RUN cd /tmp \
@@ -23,19 +25,21 @@ RUN cd /tmp \
 	&& unzip gradle-${GRADLE_INSTALL_VERSION}-bin.zip -d /opt \
 	&& rm gradle-${GRADLE_INSTALL_VERSION}-bin.zip
 
-# Install Oracle JDK
-RUN wget --no-check-certificate --no-cookies \
-	--header "Cookie: oraclelicense=accept-securebackup-cookie" \
-	http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.rpm \
-	&& yum -y localinstall jdk-8u65-linux-x64.rpm \
-	&& rm -f jdk-8u65-linux-x64.rpm
-
 # Install node.js
-RUN yum -y install epel-release \
-	&& yum -y install nodejs
+RUN apt-get -y install npm
 
-RUN useradd -r -m -U bamboo-agent
+# Install chromium and chromedriver
+RUN apt-get -y install chromedriver
 
+# Link JDKs
+RUN ln -s /usr/lib/jvm/java-1.7.0-openjdk-amd64 /usr/lib/jvm/java-1.7.0-openjdk \
+	&& ln -s /usr/lib/jvm/java-1.8.0-openjdk-amd64 /usr/lib/jvm/java-1.8.0-openjdk
+
+# Create user and group for Bamboo (match UID and GID from CentOS)
+RUN groupadd -r -g 997 bamboo-agent \
+	&& useradd -r -m -u 998 -g 997 bamboo-agent
+
+# Common rules
 COPY bamboo-agent.sh /
 
 USER bamboo-agent
