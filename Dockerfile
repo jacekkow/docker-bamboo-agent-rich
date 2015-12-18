@@ -34,7 +34,9 @@ RUN wget --no-check-certificate --no-cookies \
 RUN yum -y install epel-release \
 	&& yum -y install nodejs
 
-RUN useradd -r -m -U bamboo-agent
+# Create user and group for Bamboo
+RUN groupadd -r -g 900 bamboo-agent \
+	&& useradd -r -m -u 900 -g 900 bamboo-agent
 
 COPY bamboo-agent.sh /
 
