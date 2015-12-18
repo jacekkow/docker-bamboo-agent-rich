@@ -2,13 +2,13 @@ FROM centos:7
 MAINTAINER Jacek Kowalski <jkowalsk@student.agh.edu.pl>
 
 # Maven version to install
-ENV MAVEN_INSTALL_VERSION 3.0.5
+ENV MAVEN_INSTALL_VERSION 3.3.9
 # Gradle version to install
-ENV GRADLE_INSTALL_VERSION 2.3
+ENV GRADLE_INSTALL_VERSION 2.9
 
 # Update system & install dependencies
 RUN yum -y update \
-	&& yum -y install cvs subversion git mercurial java-1.7.0-openjdk-devel java-1.8.0-openjdk-devel ant unzip wget xorg-x11-server-Xvfb \
+	&& yum -y install cvs subversion git mercurial java-1.7.0-openjdk-devel java-1.8.0-openjdk-devel ant unzip wget which xorg-x11-server-Xvfb \
 	&& yum -y clean all
 
 # Install maven (see https://jira.atlassian.com/browse/BAM-16043)
