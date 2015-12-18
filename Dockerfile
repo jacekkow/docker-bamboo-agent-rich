@@ -30,7 +30,9 @@ RUN wget --no-check-certificate --no-cookies \
 	&& yum -y localinstall jdk-8u65-linux-x64.rpm \
 	&& rm -f jdk-8u65-linux-x64.rpm
 
-RUN useradd -r -m -U bamboo-agent
+# Create user and group for Bamboo
+RUN groupadd -r -g 900 bamboo-agent \
+	&& useradd -r -m -u 900 -g 900 bamboo-agent
 
 COPY bamboo-agent.sh /
 
