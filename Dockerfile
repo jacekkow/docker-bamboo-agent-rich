@@ -4,7 +4,7 @@ MAINTAINER Jacek Kowalski <jkowalsk@student.agh.edu.pl>
 # Maven version to install
 ENV MAVEN_INSTALL_VERSION 3.3.9
 # Gradle version to install
-ENV GRADLE_INSTALL_VERSION 2.3
+ENV GRADLE_INSTALL_VERSION 2.9
 
 # Update system & install dependencies
 RUN yum -y update \
