@@ -2,9 +2,9 @@ FROM debian:jessie
 MAINTAINER Jacek Kowalski <jkowalsk@student.agh.edu.pl>
 
 # Maven version to install
-ENV MAVEN_INSTALL_VERSION 3.0.5
+ENV MAVEN_INSTALL_VERSION 3.3.9
 # Gradle version to install
-ENV GRADLE_INSTALL_VERSION 2.3
+ENV GRADLE_INSTALL_VERSION 2.9
 
 RUN echo deb http://httpredir.debian.org/debian jessie-backports main >> /etc/apt/sources.list
 
