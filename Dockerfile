@@ -35,9 +35,9 @@ RUN apt-get -y install chromedriver
 RUN ln -s /usr/lib/jvm/java-1.7.0-openjdk-amd64 /usr/lib/jvm/java-1.7.0-openjdk \
 	&& ln -s /usr/lib/jvm/java-1.8.0-openjdk-amd64 /usr/lib/jvm/java-1.8.0-openjdk
 
-# Create user and group for Bamboo (match UID and GID from CentOS)
-RUN groupadd -r -g 997 bamboo-agent \
-	&& useradd -r -m -u 998 -g 997 bamboo-agent
+# Create user and group for Bamboo
+RUN groupadd -r -g 900 bamboo-agent \
+	&& useradd -r -m -u 900 -g 900 bamboo-agent
 
 # Common rules
 COPY bamboo-agent.sh /
