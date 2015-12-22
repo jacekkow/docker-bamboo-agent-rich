@@ -19,15 +19,15 @@ Docker repository with additional applications installed:
  * OpenJDK 1.8 (/usr/lib/jvm/java-1.8.0-openjdk),
 * build systems:
  * Ant (/usr/share/ant),
- * Maven 3 (/opt/apache-maven-3.0.5),
+ * Maven 3 (/opt/apache-maven),
  * Gradle 2.3 (/opt/gradle-2.3),
 * miscellaneous:
  * unzip,
  * wget,
  * Xvfb (started during container initialization).
 
-Apart from Gradle, all software is installed
-from CentOS repositories.
+Apart from Gradle and Maven, all software is installed
+from CentOS or EPEL repositories.
 
 Gradle is installed using binary package available
 on the official website.

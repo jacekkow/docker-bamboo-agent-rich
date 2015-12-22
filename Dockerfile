@@ -15,7 +15,8 @@ RUN yum -y update \
 RUN cd /tmp \
 	&& wget ftp://mirror.reverse.net/pub/apache/maven/maven-3/${MAVEN_INSTALL_VERSION}/binaries/apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz \
 	&& tar xf apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz -C /opt \
-	&& rm -f apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz
+	&& rm -f apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz \
+	&& ln -s /opt/apache-maven-${MAVEN_INSTALL_VERSION} /opt/apache-maven
 
 # Install gradle
 RUN cd /tmp \
