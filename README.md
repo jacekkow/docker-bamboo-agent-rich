@@ -20,7 +20,7 @@ Docker repository with additional applications installed:
 * build systems:
  * Ant (/usr/share/ant),
  * Maven 3 (/opt/apache-maven),
- * Gradle 2.3 (/opt/gradle-2.3),
+ * Gradle 2 (/opt/gradle),
 * miscellaneous:
  * unzip,
  * wget,

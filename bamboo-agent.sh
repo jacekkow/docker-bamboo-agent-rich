@@ -28,6 +28,7 @@ export JAVA_TOOL_OPTIONS="-Dfile.encoding=utf-8 -Dsun.jnu.encoding=utf-8"
 export DISPLAY=:1
 export ANT_HOME=/usr/share/ant
 export M2_HOME=/opt/apache-maven
+export GRADLE_HOME=/opt/gradle
 
 echo Starting Xvfb...
 rm -f /tmp/Xvfb.log

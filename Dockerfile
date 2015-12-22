@@ -22,7 +22,8 @@ RUN cd /tmp \
 RUN cd /tmp \
 	&& wget "https://services.gradle.org/distributions/gradle-${GRADLE_INSTALL_VERSION}-bin.zip" \
 	&& unzip gradle-${GRADLE_INSTALL_VERSION}-bin.zip -d /opt \
-	&& rm gradle-${GRADLE_INSTALL_VERSION}-bin.zip
+	&& rm gradle-${GRADLE_INSTALL_VERSION}-bin.zip \
+	&& ln -s /opt/gradle-${GRADLE_INSTALL_VERSION} /opt/gradle
 
 # Create user and group for Bamboo
 RUN groupadd -r -g 900 bamboo-agent \
