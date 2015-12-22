@@ -5,6 +5,8 @@ MAINTAINER Jacek Kowalski <jkowalsk@student.agh.edu.pl>
 ENV MAVEN_INSTALL_VERSION 3.3.9
 # Gradle version to install
 ENV GRADLE_INSTALL_VERSION 2.9
+# JRuby version to install
+ENV JRUBY_INSTALL_VERSION 9.0.4.0
 
 # Update system & install dependencies
 RUN yum -y update \
@@ -24,6 +26,13 @@ RUN cd /tmp \
 	&& unzip gradle-${GRADLE_INSTALL_VERSION}-bin.zip -d /opt \
 	&& rm gradle-${GRADLE_INSTALL_VERSION}-bin.zip \
 	&& ln -s /opt/gradle-${GRADLE_INSTALL_VERSION} /opt/gradle
+
+# Install JRuby
+RUN cd /tmp \
+	&& wget "https://s3.amazonaws.com/jruby.org/downloads/${JRUBY_INSTALL_VERSION}/jruby-bin-${JRUBY_INSTALL_VERSION}.tar.gz" \
+	&& tar xf jruby-bin-${JRUBY_INSTALL_VERSION}.tar.gz -C /opt \
+	&& rm -f jruby-bin-${JRUBY_INSTALL_VERSION}.tar.gz \
+	&& ln -s /opt/jruby-${JRUBY_INSTALL_VERSION} /opt/jruby
 
 # Install Oracle JDK
 RUN wget --no-check-certificate --no-cookies \

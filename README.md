@@ -23,6 +23,7 @@ Docker repository with additional applications installed:
  * Maven 3 (/opt/apache-maven),
  * Gradle 2 (/opt/gradle),
 * miscellaneous:
+ * JRuby 9k,
  * node.js,
  * unzip,
  * wget,

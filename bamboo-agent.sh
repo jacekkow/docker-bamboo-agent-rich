@@ -29,6 +29,7 @@ export DISPLAY=:1
 export ANT_HOME=/usr/share/ant
 export M2_HOME=/opt/apache-maven
 export GRADLE_HOME=/opt/gradle
+export JRUBY_HOME=/opt/jruby
 
 echo Starting Xvfb...
 rm -f /tmp/Xvfb.log
