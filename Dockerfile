@@ -7,10 +7,12 @@ ENV MAVEN_INSTALL_VERSION 3.3.9
 ENV GRADLE_INSTALL_VERSION 2.9
 # JRuby version to install
 ENV JRUBY_INSTALL_VERSION 9.0.4.0
+# PhantomJS version to install
+ENV PHANTOMJS_INSTALL_VERSION 1.9.8
 
 # Update system & install dependencies
 RUN yum -y update \
-	&& yum -y install cvs subversion git mercurial java-1.7.0-openjdk-devel java-1.8.0-openjdk-devel ant unzip wget which xorg-x11-server-Xvfb \
+	&& yum -y install cvs subversion git mercurial java-1.7.0-openjdk-devel java-1.8.0-openjdk-devel ant bzip2 unzip wget which xorg-x11-server-Xvfb \
 	&& yum -y clean all
 
 # Install maven (see https://jira.atlassian.com/browse/BAM-16043)
@@ -44,6 +46,13 @@ RUN wget --no-check-certificate --no-cookies \
 # Install node.js
 RUN yum -y install epel-release \
 	&& yum -y install nodejs
+
+# Install PhantomJS
+RUN cd /tmp \
+	&& wget "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_INSTALL_VERSION}-linux-x86_64.tar.bz2" \
+	&& tar xf phantomjs-${PHANTOMJS_INSTALL_VERSION}-linux-x86_64.tar.bz2 -C /opt \
+	&& rm -f phantomjs-${PHANTOMJS_INSTALL_VERSION}-linux-x86_64.tar.bz2 \
+	&& ln -s /opt/phantomjs-${PHANTOMJS_INSTALL_VERSION}-linux-x86_64 /opt/phantomjs
 
 # Create user and group for Bamboo
 RUN groupadd -r -g 900 bamboo-agent \

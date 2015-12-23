@@ -25,6 +25,7 @@ Docker repository with additional applications installed:
 * miscellaneous:
  * JRuby 9k,
  * node.js,
+ * Phantom JS 1.9,
  * unzip,
  * wget,
  * Xvfb (started during container initialization).
