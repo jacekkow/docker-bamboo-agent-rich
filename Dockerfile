@@ -17,13 +17,15 @@ RUN apt-get -y update \
 RUN cd /tmp \
 	&& wget ftp://mirror.reverse.net/pub/apache/maven/maven-3/${MAVEN_INSTALL_VERSION}/binaries/apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz \
 	&& tar xf apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz -C /opt \
-	&& rm -f apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz
+	&& rm -f apache-maven-${MAVEN_INSTALL_VERSION}-bin.tar.gz \
+	&& ln -s /opt/apache-maven-${MAVEN_INSTALL_VERSION} /opt/apache-maven
 
 # Install gradle
 RUN cd /tmp \
 	&& wget "https://services.gradle.org/distributions/gradle-${GRADLE_INSTALL_VERSION}-bin.zip" \
 	&& unzip gradle-${GRADLE_INSTALL_VERSION}-bin.zip -d /opt \
-	&& rm gradle-${GRADLE_INSTALL_VERSION}-bin.zip
+	&& rm gradle-${GRADLE_INSTALL_VERSION}-bin.zip \
+	&& ln -s /opt/gradle-${GRADLE_INSTALL_VERSION} /opt/gradle
 
 # Install node.js
 RUN apt-get -y install npm
